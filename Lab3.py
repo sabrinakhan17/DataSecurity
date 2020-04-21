@@ -1,9 +1,17 @@
-def EA(a, N):
+def EA(a, N): #Euclidean Algorithm
 	if a == 0:
 		return N
 	return EA(N % a, a)
 
-def EEA(N, a, x, y):
+def inverse(a, N): #Finds inverse modulo
+	a = a % N
+	for x in range(1, N):
+		if ((a * x) % N == 1):
+			return x
+	else:
+		print('None')
+
+def EEA(N, a, x, y): #Extended Euclidean Algorithm
 	if N == 0:
 		x = 0
 		y = 1
@@ -18,10 +26,11 @@ def EEA(N, a, x, y):
 
 	return EA
 
-print('Euclidian Algorithm:')
-a = 975
-N = 1000
-print('GCD of',a,'and',N,'is',EA(N, a))
+print('Euclidian Algorithm, Input the numbers below:')
+a = input()
+N = input()
+print('GCD of',a,'and',N,'is',EA(int(a), int(N)))
+print('The modulo inverse of',N,'and',a,'is',inverse(int(N), int(a)))
 
 print('Extended Euclidian Algorithm:')
 x = -1
